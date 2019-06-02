@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Album</string>
+
+    <string name="msg_no_internet">No Internet</string>
+    <string name="msg_empty_data">No data available</string>
+
+    <string name="err_server_host">Host server not found</string>
+    <string name="err_no_internet">Please check your Internet connection</string>
+</resources>
