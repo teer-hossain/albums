@@ -43,14 +43,6 @@ android {
         // used by Room, to test migrations
         androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
     }
-
-    androidExtensions {
-        experimental = true
-    }
-
-    dataBinding {
-        enabled = true
-    }
 }
 
 dependencies {

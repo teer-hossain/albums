@@ -14,9 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textSize="@dimen/normal_text_size"
+            android:textColor="@android:color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             tools:text="non esse culpa molestiae omnis sed optio"/>
 
 </LinearLayout>
