@@ -95,32 +95,5 @@ class AlbumListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
         context?.toast(album.toString())
     }
 
-    private class AlbumAdapter(
-        private val albums: ArrayList<Album> = arrayListOf(),
-        private val itemClick: (Album) -> Unit
-    ) : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
-
-        fun addAlbums(newAlbums: List<Album>) {
-            albums.clear()
-            albums.addAll(newAlbums)
-            notifyDataSetChanged()
-        }
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) = holder.bindAlbum(albums[position])
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-            ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_album, parent, false), itemClick)
-
-        override fun getItemCount(): Int = albums.size
-
-        class ViewHolder(v: View, private val itemClick: (Album) -> Unit) : RecyclerView.ViewHolder(v) {
-
-            fun bindAlbum(album: Album) = with(album) {
-                itemView.albumName.text = title
-                itemView.setOnClickListener { itemClick(this) }
-            }
-        }
-
-    }
 
 }

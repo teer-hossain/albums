@@ -11,6 +11,7 @@ import com.exercise.album.data.db.AlbumDao
 import com.exercise.album.data.db.AppDatabase
 import org.junit.After
 import org.junit.Assert
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -28,6 +29,7 @@ class AlbumDatabaseTest {
         db = Room.inMemoryDatabaseBuilder(
             context, AppDatabase::class.java
         ).build()
+        albumDao = db.getAlbumDao()
     }
 
     @After
@@ -41,8 +43,14 @@ class AlbumDatabaseTest {
         val albums = arrayListOf<AlbumEntity>().apply {
             (1..3).forEach { add(AlbumEntity(it, it, "Title$it")) }
         }
+        // Insert
         albumDao.insertAll(albums)
-        Assert.assertEquals(albums.size, albumDao.getAlbums().size)
+        assertEquals(albums.size, albumDao.getAlbums().size)
+
+        // Delete
+        albumDao.deleteAll()
+        assertEquals(0, albumDao.getAlbums().size)
     }
+
 
 }

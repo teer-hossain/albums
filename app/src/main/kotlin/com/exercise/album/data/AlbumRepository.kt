@@ -87,7 +87,7 @@ class AlbumRepository private constructor(app: Application) : AlbumDataSource {
         @Volatile
         private var instance: AlbumDataSource? = null
 
-        fun getInstance(app: Application) =
+        fun getInstance(app: Application): AlbumDataSource =
             instance ?: synchronized(this) {
                 instance ?: AlbumRepository(app).also { instance = it }
             }
