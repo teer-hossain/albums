@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.exercise.album.data.Album
 import com.exercise.album.data.AlbumRepository
+import com.exercise.album.data.db.AppDatabase
 import com.exercise.album.ext.toLiveData
 import com.exercise.album.support.entities.Outcome
 import io.reactivex.disposables.CompositeDisposable
@@ -24,6 +25,7 @@ class AlbumViewModel(app: Application) : AndroidViewModel(app) {
 
     override fun onCleared() {
         disposable.clear()
+        AppDatabase.destroyInstance()
         AlbumRepository.destroyInstance()
         super.onCleared()
     }

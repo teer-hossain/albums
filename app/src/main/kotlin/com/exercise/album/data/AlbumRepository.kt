@@ -87,13 +87,12 @@ class AlbumRepository private constructor(app: Application) : AlbumDataSource {
         @Volatile
         private var instance: AlbumDataSource? = null
 
-        fun getInstance(app: Application): AlbumDataSource =
+        fun getInstance(app: Application) =
             instance ?: synchronized(this) {
                 instance ?: AlbumRepository(app).also { instance = it }
             }
 
         fun destroyInstance() {
-            AppDatabase.destroyInstance()
             instance = null
         }
     }
